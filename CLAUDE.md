@@ -54,7 +54,7 @@ if you cannot name the file, you do not understand the task yet. ask.
 | file | what it is |
 |---|---|
 | this file | house rules. read automatically at the start of every session. |
-| `.claude/rules/data-files.md` | one file per person, and why |
+| `.claude/rules/data-files.md` | one file per person, and why. pulled in by the `@` line further down this file. |
 | `.claude/skills/plan/` | a **skill**. ask for it and it turns a ticket into a plan, then stops. never automatic. |
 | `.claude/skills/add-member/` | a **skill**. writes the card file in the right shape. |
 | `.claude/agents/developer.md` | an **agent**. carries out an approved plan. no terminal, so it cannot run git. |
@@ -62,6 +62,12 @@ if you cannot name the file, you do not understand the task yet. ask.
 
 worth knowing the difference: **this file asks, `settings.json` forbids.** everything above is
 a strong instruction that can be missed. the deny list on rebase and force-push cannot be.
+
+## the rules
+
+the long-form rule for this project, loaded with this file:
+
+@.claude/rules/data-files.md
 
 ## how the data works
 
