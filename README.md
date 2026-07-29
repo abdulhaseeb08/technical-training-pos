@@ -14,7 +14,18 @@ the raw data behind the page is at <http://localhost:3000/api/team>.
 
 ## your job today
 
-add **one** file, `src/data/members/<your-name>.json`:
+open `TICKET.md`, fill it in, and paste the whole thing into the claude panel in vs code.
+
+you will get a **plan** back first — which file it is going to create and exactly what it will
+put in it. read it. if it looks right, say go, and the `developer` agent writes it.
+
+then refresh, click details on your own card, and the feature is done.
+
+you never have to say which files to change. that is what the harness is for.
+
+### doing it by hand instead
+
+it is one file, `src/data/members/<your-name>.json`:
 
     {
       "name": "sara",
@@ -25,13 +36,8 @@ add **one** file, `src/data/members/<your-name>.json`:
       "funFact": "shows in the modal"
     }
 
-or just open the claude panel in vs code and say **"add me to the wall"** — the
-`add-member` skill in `.claude/skills/` knows the shape and will do it for you.
-
-refresh, click details on your own card, and that's the feature done.
-
-`extras` is optional. add a flat object of strings to it and the modal renders whatever you
-put there, with nobody touching a component:
+`extras` is optional. add a flat object of strings and the modal renders whatever you put
+there, without anybody touching a component:
 
     "extras": { "favourite word": "merged" }
 
@@ -45,26 +51,39 @@ design choice, not an accident — see `.claude/rules/data-files.md`.
 
 ## what's in the harness
 
-the `.claude/` folder is the point of the second half of the workshop. every piece in it is
-real and running:
+the `.claude/` folder is the point of the second half of the workshop. every piece is real and
+running.
 
 | file | what it is |
 |---|---|
-| `CLAUDE.md` | house rules. read automatically at the start of every session. |
+| `CLAUDE.md` | **rules.** read automatically at the start of every session. |
 | `.claude/rules/data-files.md` | the one-file-per-person rule, in detail |
-| `.claude/skills/add-member/` | a **skill**. ask "add me to the wall" and it fires. |
-| `.claude/agents/card-reviewer.md` | a **subagent**. read-only second opinion on your card before you open a PR. |
-| `.claude/settings.json` | permissions. note the deny list: no rebase, no force push. |
+| `.claude/skills/plan/` | a **skill**. turns your ticket into a plan, then stops for you. |
+| `.claude/skills/add-member/` | a **skill**. writes the card file in the right shape. |
+| `.claude/agents/developer.md` | an **agent**. carries out a plan you approved. |
+| `.claude/settings.json` | **permissions.** the deny list is a wall, not a request. |
 
-copy that folder into your own projects on monday.
+the flow those add up to:
+
+    your ticket  ->  plan skill  ->  YOU APPROVE  ->  developer agent  ->  add-member skill
+
+the approval step is not decoration. an agent cannot stop halfway to ask you something, so the
+gate has to sit with you, in the chat, between the two halves. **you are the handoff.**
+
+and one distinction worth keeping: **`CLAUDE.md` asks, `settings.json` forbids.** the house
+rules are strong instructions that can be missed. the deny list on rebase and force-push
+cannot be. the `developer` agent has no terminal at all, which is why it cannot run git even
+if it wanted to.
+
+copy this folder into your own projects on monday.
 
 ## the shape of the app
 
-    src/app/page.tsx              reads the files, renders the wall
-    src/app/api/team/route.ts     the same data, raw
-    src/lib/members.ts            reads + validates src/data/members/*.json
-    src/components/TeamWall.tsx   holds which card is open
-    src/components/MemberCard.tsx the compact view
+    src/app/page.tsx               reads the files, renders the wall
+    src/app/api/team/route.ts      the same data, raw
+    src/lib/members.ts             reads + validates src/data/members/*.json
+    src/components/TeamWall.tsx    holds which card is open
+    src/components/MemberCard.tsx  the compact view
     src/components/MemberModal.tsx the detailed view
 
 one modal for the whole page, not one per card.
