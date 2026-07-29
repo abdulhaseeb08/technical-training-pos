@@ -1,8 +1,0 @@
-{
-  "name": "zoya",
-  "role": "product owner",
-  "emoji": "🌊",
-  "tagline": "the reason this project has a CLAUDE.md",
-  "about": "zoya asked claude to check one file and it committed nine. that afternoon became the five house rules sitting in CLAUDE.md at the root of this repo, which is the single most useful thing anybody takes home from this workshop.",
-  "funFact": "reads the diff before accepting it. every single time. be like zoya."
-}

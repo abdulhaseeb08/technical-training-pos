@@ -23,7 +23,8 @@ export function TeamWall({ members }: { members: Member[] }) {
   if (members.length === 0) {
     return (
       <p className="empty">
-        nobody up here yet. add <code>src/data/members/your-name.json</code> to be the first.
+        to put the first one up: fill in <code>TICKET.md</code> and paste it into the claude
+        panel, or write <code>src/data/members/your-name.json</code> by hand. then refresh.
       </p>
     )
   }
