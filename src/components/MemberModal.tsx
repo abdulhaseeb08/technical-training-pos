@@ -16,9 +16,11 @@ export function MemberModal({ member, onClose }: MemberModalProps) {
   const closeRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
-    // lock the page behind the modal, and restore whatever it was afterwards
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    // lock the page behind the modal, and restore whatever it was afterwards.
+    // the scroll container is <html>, not <body>, so locking body alone does nothing.
+    const root = document.documentElement
+    const previousOverflow = root.style.overflow
+    root.style.overflow = 'hidden'
     closeRef.current?.focus()
 
     function onKeyDown(event: KeyboardEvent) {
@@ -47,7 +49,7 @@ export function MemberModal({ member, onClose }: MemberModalProps) {
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = previousOverflow
+      root.style.overflow = previousOverflow
     }
   }, [onClose])
 
