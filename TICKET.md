@@ -1,7 +1,7 @@
 # your ticket
 
 fill this in and paste the whole thing into the claude panel in vs code. it is shaped like a
-linear ticket on purpose — it is the thing you already write every week.
+linear ticket on purpose. it is the thing you already write every week.
 
 ---
 
@@ -23,13 +23,13 @@ I want a card on the team wall so my name is on the site.
 - name:
 - role:
 - emoji:
-- tagline — one short line, this shows on the card:
-- about — a few sentences, this shows in the modal:
+- tagline, one short line, this shows on the card:
+- about, a few sentences, this shows in the modal:
 - fun fact:
 
 ---
 
-that's the whole job. you do not need to say which files to change or how — the harness in
+that's the whole job. you do not need to say which files to change or how. the harness in
 `.claude/` already knows.
 
 **want to see the change before it happens?** add *"plan this first"* when you paste the

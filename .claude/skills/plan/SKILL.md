@@ -14,7 +14,7 @@ human to read and approve.
    acceptance criteria.
 2. work out **the single file** this touches. on this project that is almost always
    `src/data/members/<their-name>.json`. if a task looks like it needs more than one file, or
-   needs anything in `src/components/` or `src/lib/`, **stop and say so** — that is a scoping
+   needs anything in `src/components/` or `src/lib/`, **stop and say so**. that is a scoping
    problem, not something to solve by editing more files.
 3. collect what's missing: name, role, emoji, tagline, about, fun fact. never invent details
    about a real person sitting in the room.

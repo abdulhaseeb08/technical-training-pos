@@ -33,5 +33,5 @@ the workshop untangling them instead of shipping.
     }
 
 every field except `extras` is required and must be a non-empty string. `extras` is an
-optional flat object of strings — put whatever you like in it and the modal renders it
+optional flat object of strings. put whatever you like in it and the modal renders it
 without anybody editing a component.

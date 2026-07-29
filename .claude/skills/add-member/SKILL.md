@@ -11,7 +11,7 @@ it never touches a shared file, which is what keeps every branch conflict-free.
 ## steps
 
 1. ask for anything missing: name, role, emoji, a one-line tagline for the card, a couple of
-   sentences for the modal, and a fun fact. **do not invent these** — they are about a real
+   sentences for the modal, and a fun fact. **do not invent these**. they are about a real
    person sitting in the room.
 2. work out the filename: lowercase, spaces to hyphens, drop anything that is not a letter,
    number or hyphen. "Ali Raza" becomes `ali-raza.json`.

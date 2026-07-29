@@ -48,7 +48,7 @@ there, without anybody touching a component:
 
 git only conflicts when two branches change the same lines of the same file. everybody here
 gets their own file, so six branches merge back into `main` cleanly. that is a deliberate
-design choice, not an accident — see `.claude/rules/data-files.md`.
+design choice, not an accident. see `.claude/rules/data-files.md`.
 
 **so: never edit a card you did not create, and never commit `package-lock.json`.**
 

@@ -39,8 +39,8 @@ function readMember(file: string): Member | null {
     problem = error instanceof Error ? error.message : String(error)
   }
 
-  if (isStrict) throw new Error(`${file} is not a valid member card — ${problem}`)
-  console.warn(`[team-wall] skipping ${file} — ${problem}`)
+  if (isStrict) throw new Error(`${file} is not a valid member card: ${problem}`)
+  console.warn(`[team-wall] skipping ${file}: ${problem}`)
   return null
 }
 
