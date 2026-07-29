@@ -6,16 +6,22 @@ the demo project for the dev flow workshop. deliberately small.
 
 when someone hands you a task, usually a ticket pasted in from linear:
 
-1. **plan first.** use the `plan` skill. it works out which single file the task touches and
-   exactly what goes in it.
-2. **show the plan, then stop.** write nothing. call no other skill. invoke no agent. wait
-   for a human to say go.
-3. **once they say go**, hand the approved plan to the `developer` agent. that agent does the
-   writing.
-4. **never commit or push.** show the diff and let them commit their own work.
+1. **say what you are about to do**, every time. see the next section.
+2. **implementation goes to the `developer` agent.** you do not write the card file yourself,
+   even though you easily could. hand the task over and let that agent do the writing. this is
+   deliberate: the work belongs to a dedicated agent, not to whoever happens to be running
+   this conversation.
+3. **never commit or push.** show the diff and let them commit their own work.
 
-step 2 is the one that matters. the entire point of this project is that a person sees the
-change before it happens.
+### if they want a plan first
+
+there is a `plan` skill in this repo. **do not invoke it unless they ask for it.** some people
+want to see a plan before anything gets written and some would rather just get on with it.
+that is their call, not yours.
+
+if they do ask, run the skill, show them what it produces, and **stop** until they say go.
+once they approve it, step 2 applies exactly as normal: the `developer` agent implements the
+approved plan.
 
 ## say what you are about to do
 
@@ -49,7 +55,7 @@ if you cannot name the file, you do not understand the task yet. ask.
 |---|---|
 | this file | house rules. read automatically at the start of every session. |
 | `.claude/rules/data-files.md` | one file per person, and why |
-| `.claude/skills/plan/` | a **skill**. turns a ticket into a plan, then stops. |
+| `.claude/skills/plan/` | a **skill**. ask for it and it turns a ticket into a plan, then stops. never automatic. |
 | `.claude/skills/add-member/` | a **skill**. writes the card file in the right shape. |
 | `.claude/agents/developer.md` | an **agent**. carries out an approved plan. no terminal, so it cannot run git. |
 | `.claude/settings.json` | **permissions**. the deny list is a wall, not a request. |

@@ -29,6 +29,9 @@ I want a card on the team wall so my name is on the site.
 
 ---
 
-that's the whole job. you do not need to say which files to change or how. the harness in
-`.claude/` already knows, and it will show you a plan and wait for you to approve it before
-anything gets written.
+that's the whole job. you do not need to say which files to change or how — the harness in
+`.claude/` already knows.
+
+**want to see the change before it happens?** add *"plan this first"* when you paste the
+ticket. you will get back exactly which file it means to create and what will go in it, and
+nothing is written until you say go. skip it and it will just get on with the work.

@@ -16,8 +16,11 @@ the raw data behind the page is at <http://localhost:3000/api/team>.
 
 open `TICKET.md`, fill it in, and paste the whole thing into the claude panel in vs code.
 
-you will get a **plan** back first — which file it is going to create and exactly what it will
-put in it. read it. if it looks right, say go, and the `developer` agent writes it.
+the `developer` agent will write your card and show you the diff.
+
+if you would rather see what it intends to do **before** anything is written, add
+*"plan this first"* when you paste the ticket. you will get back the file it means to create
+and exactly what goes in it, and nothing happens until you say go.
 
 then refresh, click details on your own card, and the feature is done.
 
@@ -58,17 +61,26 @@ running.
 |---|---|
 | `CLAUDE.md` | **rules.** read automatically at the start of every session. |
 | `.claude/rules/data-files.md` | the one-file-per-person rule, in detail |
-| `.claude/skills/plan/` | a **skill**. turns your ticket into a plan, then stops for you. |
+| `.claude/skills/plan/` | a **skill**. ask for it and it turns your ticket into a plan, then stops. |
 | `.claude/skills/add-member/` | a **skill**. writes the card file in the right shape. |
 | `.claude/agents/developer.md` | an **agent**. carries out a plan you approved. |
 | `.claude/settings.json` | **permissions.** the deny list is a wall, not a request. |
 
 the flow those add up to:
 
-    your ticket  ->  plan skill  ->  YOU APPROVE  ->  developer agent  ->  add-member skill
+    your ticket  ->  [ plan skill  ->  YOU APPROVE ]  ->  developer agent  ->  add-member skill
+                     \____ only if you ask for it ____/
 
-the approval step is not decoration. an agent cannot stop halfway to ask you something, so the
-gate has to sit with you, in the chat, between the two halves. **you are the handoff.**
+the plan step is **opt-in on purpose**. some people want to see what is coming before anything
+is written, some would rather get on with it, and that is a preference, not a house rule. ask
+for a plan and you get one, and nothing is written until you approve it.
+
+when you do ask, the approval is not decoration. a subagent cannot stop halfway to ask you
+something, so the gate has to sit with you, in the chat, between the two halves. **you are the
+handoff.**
+
+the `developer` agent, on the other hand, is not optional. `CLAUDE.md` routes every
+implementation to it rather than letting the main conversation write the file itself.
 
 and one distinction worth keeping: **`CLAUDE.md` asks, `settings.json` forbids.** the house
 rules are strong instructions that can be missed. the deny list on rebase and force-push
