@@ -1,0 +1,20 @@
+name: build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      # STRICT_MEMBERS turns a malformed card file into a failed build instead of a skipped
+      # card, so a broken PR goes red here rather than silently vanishing from the wall.
+      - run: STRICT_MEMBERS=1 npm run build

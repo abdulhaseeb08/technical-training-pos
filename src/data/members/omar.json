@@ -1,0 +1,12 @@
+{
+  "name": "omar",
+  "role": "product owner",
+  "emoji": "⚡",
+  "tagline": "asks 'is it live yet' roughly nine times a day",
+  "about": "omar has heard the phrase 'the build is red' in about two hundred standups and, until this morning, assumed it meant something was on fire. it does not.",
+  "funFact": "once shipped a copy change on a friday afternoon and lived to tell the story.",
+  "extras": {
+    "favourite word": "merged",
+    "least favourite word": "blocked"
+  }
+}

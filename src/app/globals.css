@@ -1,0 +1,109 @@
+/* same lamplight palette as the workshop deck, so the wall looks like the slides */
+:root {
+  --bg: #12101c;
+  --card: #1b1829;
+  --card2: #231f35;
+  --line: #2e2942;
+  --body: #e9e4f5;
+  --muted: #8a83a8;
+  --ui: #b9a5ff;
+  --build: #7ee0be;
+  --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--ui); outline-offset: 3px; border-radius: 6px; }
+
+.page { max-width: 1100px; margin: 0 auto; padding: clamp(32px, 6vw, 80px) clamp(20px, 4vw, 48px); }
+
+.masthead { margin-bottom: clamp(28px, 4vw, 44px); }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .13em; color: var(--muted); margin-bottom: 14px; }
+.masthead h1 { font-size: clamp(34px, 6vw, 64px); font-weight: 700; letter-spacing: -.03em; line-height: 1.04; }
+.lede { margin-top: 14px; color: var(--muted); font-size: clamp(15px, 1.5vw, 19px); max-width: 54ch; line-height: 1.6; }
+.empty { color: var(--muted); font-size: 17px; line-height: 1.7; }
+.empty code, .lede code { font-family: var(--mono); color: var(--ui); font-size: .92em; }
+
+/* the grid has to look deliberate at three cards and at thirty */
+.wall { list-style: none; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.card:hover { border-color: var(--ui); transform: translateY(-2px); }
+.card-emoji { font-size: 30px; line-height: 1; margin-bottom: 6px; }
+.card-name { font-size: 21px; font-weight: 500; letter-spacing: -.01em; }
+.card-role { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--build); }
+/* the tagline is clamped so one long line can never stretch a card taller than its row */
+.card-tagline {
+  color: var(--muted); font-size: 14px; line-height: 1.5; margin-top: 6px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-button {
+  margin-top: auto; align-self: flex-start;
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px;
+  transition: color .16s, border-color .16s;
+}
+.card-button:hover { color: var(--body); border-color: var(--ui); }
+
+.backdrop {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(8, 6, 15, .74);
+  display: grid; place-items: center;
+  padding: clamp(16px, 4vw, 44px);
+  animation: fade .16s ease;
+}
+@keyframes fade { from { opacity: 0 } to { opacity: 1 } }
+
+.modal {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  width: min(100%, 560px);
+  /* long content scrolls inside the dialog, never the page behind it */
+  max-height: min(84vh, 720px);
+  display: flex; flex-direction: column;
+  animation: rise .2s cubic-bezier(.2, .8, .3, 1);
+}
+@keyframes rise { from { opacity: 0; transform: translateY(12px) scale(.98) } to { opacity: 1; transform: none } }
+
+.modal-head {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 16px;
+  padding: 24px 24px 18px; border-bottom: 1px solid var(--line);
+}
+.modal-emoji { font-size: 34px; line-height: 1; }
+.modal-title h2 { font-size: 25px; font-weight: 500; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.modal-role { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--build); margin-top: 5px; }
+.modal-close { font-size: 15px; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 7px 11px; line-height: 1; }
+.modal-close:hover { color: var(--body); border-color: var(--ui); }
+
+.modal-body { padding: 22px 24px 26px; overflow-y: auto; display: grid; gap: 20px; }
+.modal-body h3 { font-family: var(--mono); font-size: 12px; letter-spacing: .11em; color: var(--ui); font-weight: 500; margin-bottom: 8px; }
+.modal-body p { color: var(--muted); font-size: 15px; line-height: 1.65; overflow-wrap: anywhere; }
+
+.extras { display: grid; gap: 10px; }
+.extras div { background: var(--card2); border-radius: 8px; padding: 12px 15px; }
+.extras dt { font-family: var(--mono); font-size: 12px; color: var(--body); margin-bottom: 4px; }
+.extras dd { color: var(--muted); font-size: 14px; line-height: 1.55; overflow-wrap: anywhere; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition-duration: .01ms !important; }
+}
