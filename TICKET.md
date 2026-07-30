@@ -20,13 +20,12 @@ I want a card on the team wall so my name is on the site.
 
 **Details**
 
-- name:
-- role:
-- emoji:
-- tagline, one short line, this shows on the card:
-- about, a few sentences, this shows in the modal:
-- fun fact:
-
+- name: Maha Baig
+- role: UI/UX Designer
+- emoji: 🙂
+- tagline: The OG bluestocking.
+- about: I'm endlessly curious and love exploring ideas from every angle. You'll usually find me reading, writing, watching movies, skipping, or going on long walks. I enjoy deep conversations about philosophy, psychology, and the human experience, and I'm always happy to follow a random tangent if it leads to an interesting discussion.
+- fun fact: I can sing opera.
 ---
 
 that's the whole job. you do not need to say which files to change or how. the harness in
