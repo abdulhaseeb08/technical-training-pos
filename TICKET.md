@@ -20,12 +20,12 @@ I want a card on the team wall so my name is on the site.
 
 **Details**
 
-- name:
-- role:
-- emoji:
-- tagline, one short line, this shows on the card:
-- about, a few sentences, this shows in the modal:
-- fun fact:
+- name:Nashmia anis
+- role:Product Engineer
+- emoji:🤩
+- tagline, one short line, this shows on the card: Hello , barbie
+- about, a few sentences, this shows in the modal:pink
+- fun fact: fun
 
 ---
 
